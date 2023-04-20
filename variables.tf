@@ -1,3 +1,5 @@
+# curl -sfL https://get.k3s.io | K3S_TOKEN="12345" K3S_KUBECONFIG_MODE="644" sh -
+
 variable "cluster_blueprint" {
   type    = string
   default = "ubuntu_22_04"
@@ -5,7 +7,7 @@ variable "cluster_blueprint" {
 
 variable "master_instance_type" {
   type    = string
-  default = "nano_2_0"
+  default = "micro_2_0"
 }
 
 variable "worker_instance_type" {
@@ -30,7 +32,7 @@ variable "numero_masters" {
 
 variable "numero_workers" {
   type    = number
-  default = 2
+  default = 1
 }
 
 variable "cluster_name" {
@@ -38,8 +40,25 @@ variable "cluster_name" {
   default = "AprendaAWS-k8s"
 }
 
+variable "hybrid_activation_code" {
+  type      = string
+  default   = "seu_valor"
+  sensitive = true
+}
+
+variable "hybrid_activation_id" {
+  type      = string
+  default   = "seu_valor"
+  sensitive = true
+}
+
+variable "hybrid_activation_region" {
+  type    = string
+  default = "us-east-2"
+}
+
 variable "instance_userdata" {
   type    = string
-  default = "sudo apt update && sudo apt install unzip plocate -y && sudo /snap/amazon-ssm-agent/6312/amazon-ssm-agent -register -y -id 'alterar_com_o_seu' -code 'alterar_com_o_seu' -region 'alterar_com_a_sua' && sudo snap restart amazon-ssm-agent"
+  default = "sudo apt update && sudo apt install unzip plocate -y && sudo /snap/amazon-ssm-agent/6312/amazon-ssm-agent -register -y -id 'hybrid_activation_id' -code 'hybrid_activation_code' -region 'hybrid_activation_region' && sudo snap restart amazon-ssm-agent"
 }
 
