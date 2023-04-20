@@ -42,19 +42,19 @@ variable "cluster_name" {
 
 variable "hybrid_activation_code" {
   type      = string
-  default   = "seu_valor"
+  default   = ""
   sensitive = true
 }
 
 variable "hybrid_activation_id" {
   type      = string
-  default   = "seu_valor"
+  default   = ""
   sensitive = true
 }
 
 variable "hybrid_activation_region" {
   type    = string
-  default = "us-east-2"
+  default = ""
 }
 
 variable "instance_userdata" {
